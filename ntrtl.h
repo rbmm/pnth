@@ -1523,7 +1523,7 @@ NTSTATUS
 NTAPI
 RtlDuplicateUnicodeString(
     _In_ ULONG Flags,
-    _In_ PUNICODE_STRING StringIn,
+    _In_ PCUNICODE_STRING StringIn,
     _Out_ PUNICODE_STRING StringOut
     );
 
