@@ -6,8 +6,6 @@
 #define PHNT_VERSION PHNT_WIN11_22H2
 #endif
 
-#define _NTLSA_
-
 #if PHNT_MODE == PHNT_MODE_USER
 #define SECURITY_WIN32
 #endif
@@ -34,4 +32,17 @@
 
 typedef GUID *PGUID;
 
+EXTERN_C IMAGE_DOS_HEADER __ImageBase;
+
 #include "phnt.h"
+
+#define MINCHAR     0x80        // winnt
+#define MAXCHAR     0x7f        // winnt
+#define MINSHORT    0x8000      // winnt
+#define MAXSHORT    0x7fff      // winnt
+#define MINLONG     0x80000000  // winnt
+#define MAXLONG     0x7fffffff  // winnt
+#define MAXUCHAR    0xff        // winnt
+#define MAXUSHORT   0xffff      // winnt
+#define MAXULONG    0xffffffff  // winnt
+
