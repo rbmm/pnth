@@ -122,7 +122,7 @@ _Check_return_
 NTSTATUS
 NTAPI
 SamConnect(
-    _In_opt_ PUNICODE_STRING ServerName,
+    _In_opt_ PCUNICODE_STRING ServerName,
     _Out_ PSAM_HANDLE ServerHandle,
     _In_ ACCESS_MASK DesiredAccess,
     _In_ POBJECT_ATTRIBUTES ObjectAttributes
@@ -433,7 +433,7 @@ NTAPI
 SamEnumerateDomainsInSamServer(
     _In_ SAM_HANDLE ServerHandle,
     _Inout_ PSAM_ENUMERATE_HANDLE EnumerationContext,
-    _Outptr_ PVOID *Buffer, // PSAM_SID_ENUMERATION *Buffer
+    _Outptr_ PSAM_SID_ENUMERATION *Buffer, // PSAM_SID_ENUMERATION *Buffer
     _In_ ULONG PreferedMaximumLength,
     _Out_ PULONG CountReturned
     );
@@ -472,7 +472,7 @@ NTAPI
 SamLookupNamesInDomain(
     _In_ SAM_HANDLE DomainHandle,
     _In_ ULONG Count,
-    _In_reads_(Count) PUNICODE_STRING Names,
+    _In_reads_(Count) PCUNICODE_STRING Names,
     _Out_ _Deref_post_count_(Count) PULONG *RelativeIds,
     _Out_ _Deref_post_count_(Count) PSID_NAME_USE *Use
     );
