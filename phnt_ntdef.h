@@ -123,10 +123,19 @@ typedef struct _STRING
     _Field_size_bytes_part_opt_(MaximumLength, Length) PCHAR Buffer;
 } STRING, *PSTRING, ANSI_STRING, *PANSI_STRING, OEM_STRING, *POEM_STRING;
 
+#define MAXUSHORT 0xffff 
+
+typedef struct _CSTRING {
+	USHORT Length;
+	USHORT MaximumLength;
+	CONST char *Buffer;
+} CSTRING;
+
+typedef CSTRING *PCSTRING;
+
 typedef STRING UTF8_STRING;
 typedef PSTRING PUTF8_STRING;
 
-typedef const STRING *PCSTRING;
 typedef const ANSI_STRING *PCANSI_STRING;
 typedef const OEM_STRING *PCOEM_STRING;
 

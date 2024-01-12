@@ -267,14 +267,14 @@ typedef struct _GDI_TEB_BATCH
 typedef struct _TEB_ACTIVE_FRAME_CONTEXT
 {
     ULONG Flags;
-    PSTR FrameName;
+    PCSTR FrameName;
 } TEB_ACTIVE_FRAME_CONTEXT, *PTEB_ACTIVE_FRAME_CONTEXT;
 
 typedef struct _TEB_ACTIVE_FRAME
 {
     ULONG Flags;
-    struct _TEB_ACTIVE_FRAME *Previous;
-    PTEB_ACTIVE_FRAME_CONTEXT Context;
+    _TEB_ACTIVE_FRAME *Previous;
+    const TEB_ACTIVE_FRAME_CONTEXT* Context;
 } TEB_ACTIVE_FRAME, *PTEB_ACTIVE_FRAME;
 
 typedef struct _TEB

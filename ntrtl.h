@@ -1375,8 +1375,8 @@ NTSYSAPI
 LONG
 NTAPI
 RtlCompareString(
-    _In_ PSTRING String1,
-    _In_ PSTRING String2,
+    _In_ const STRING* String1,
+    _In_ const STRING* String2,
     _In_ BOOLEAN CaseInSensitive
     );
 
@@ -1385,8 +1385,8 @@ NTSYSAPI
 BOOLEAN
 NTAPI
 RtlEqualString(
-    _In_ PSTRING String1,
-    _In_ PSTRING String2,
+    _In_ const STRING* String1,
+    _In_ const STRING* String2,
     _In_ BOOLEAN CaseInSensitive
     );
 
@@ -1395,8 +1395,8 @@ NTSYSAPI
 BOOLEAN
 NTAPI
 RtlPrefixString(
-    _In_ PSTRING String1,
-    _In_ PSTRING String2,
+    _In_ const STRING* String1,
+    _In_ const STRING* String2,
     _In_ BOOLEAN CaseInSensitive
     );
 
@@ -1610,8 +1610,8 @@ NTSYSAPI
 BOOLEAN
 NTAPI
 RtlPrefixUnicodeString(
-    _In_ PUNICODE_STRING String1,
-    _In_ PUNICODE_STRING String2,
+    _In_ PCUNICODE_STRING String1,
+    _In_ PCUNICODE_STRING String2,
     _In_ BOOLEAN CaseInSensitive
     );
 
@@ -1648,8 +1648,8 @@ NTSTATUS
 NTAPI
 RtlFindCharInUnicodeString(
     _In_ ULONG Flags,
-    _In_ PUNICODE_STRING StringToSearch,
-    _In_ PUNICODE_STRING CharSet,
+    _In_ PCUNICODE_STRING StringToSearch,
+    _In_ PCUNICODE_STRING CharSet,
     _Out_ PUSHORT NonInclusivePrefixLength
     );
 
@@ -2041,7 +2041,7 @@ NTSYSAPI
 BOOLEAN
 NTAPI
 RtlIsNameInExpression(
-    _In_ PUNICODE_STRING Expression,
+    _In_ PCUNICODE_STRING Expression,
     _In_ PUNICODE_STRING Name,
     _In_ BOOLEAN IgnoreCase,
     _In_opt_ PWCH UpcaseTable
@@ -7703,7 +7703,7 @@ ULONG32
 NTAPI
 RtlComputeCrc32(
     _In_ ULONG32 PartialCrc,
-    _In_ PVOID Buffer,
+    _In_ const void* Buffer,
     _In_ ULONG Length
     );
 
@@ -8634,7 +8634,7 @@ NTSYSAPI
 NTSTATUS
 NTAPI
 RtlSetProtectedPolicy(
-    _In_ PGUID PolicyGuid,
+    _In_ const GUID* PolicyGuid,
     _In_ ULONG_PTR PolicyValue,
     _Out_ PULONG_PTR OldPolicyValue
     );
