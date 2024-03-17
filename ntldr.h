@@ -433,7 +433,7 @@ NTSYSAPI
 PIMAGE_BASE_RELOCATION
 NTAPI
 LdrProcessRelocationBlock(
-    _In_ ULONG_PTR VA,
+    _In_ PVOID VA,
     _In_ ULONG SizeOfBlock,
     _In_ PUSHORT NextOffset,
     _In_ LONG_PTR Diff
