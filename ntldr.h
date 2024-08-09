@@ -634,7 +634,9 @@ typedef struct _PS_SYSTEM_DLL_INIT_BLOCK
 
 #if (PHNT_VERSION >= PHNT_THRESHOLD)
 // rev
-NTSYSAPI PS_SYSTEM_DLL_INIT_BLOCK LdrSystemDllInitBlock;
+#ifdef DATA_EXPORT
+_DATAIMP PS_SYSTEM_DLL_INIT_BLOCK LdrSystemDllInitBlock;
+#endif
 #endif
 
 // Load as data table
@@ -694,24 +696,12 @@ LdrAccessResource(
     _Out_opt_ ULONG *ResourceLength
     );
 
-typedef struct _LDR_RESOURCE_INFO
-{
-    ULONG_PTR Type;
-    ULONG_PTR Name;
-    ULONG_PTR Language;
-} LDR_RESOURCE_INFO, *PLDR_RESOURCE_INFO;
-
-#define RESOURCE_TYPE_LEVEL 0
-#define RESOURCE_NAME_LEVEL 1
-#define RESOURCE_LANGUAGE_LEVEL 2
-#define RESOURCE_DATA_LEVEL 3
-
 NTSYSAPI
 NTSTATUS
 NTAPI
 LdrFindResource_U(
     _In_ PVOID DllHandle,
-    _In_ PLDR_RESOURCE_INFO ResourceInfo,
+    _In_ const PCWSTR ResourceInfo[],
     _In_ ULONG Level,
     _Out_ PIMAGE_RESOURCE_DATA_ENTRY *ResourceDataEntry
     );
@@ -722,7 +712,7 @@ NTAPI
 LdrFindResourceEx_U(
     _In_ ULONG Flags,
     _In_ PVOID DllHandle,
-    _In_ PLDR_RESOURCE_INFO ResourceInfo,
+    _In_ const PCWSTR ResourceInfo[],
     _In_ ULONG Level,
     _Out_ PIMAGE_RESOURCE_DATA_ENTRY *ResourceDataEntry
     );
@@ -732,7 +722,7 @@ NTSTATUS
 NTAPI
 LdrFindResourceDirectory_U(
     _In_ PVOID DllHandle,
-    _In_ PLDR_RESOURCE_INFO ResourceInfo,
+    _In_ const PCWSTR ResourceInfo[],
     _In_ ULONG Level,
     _Out_ PIMAGE_RESOURCE_DIRECTORY *ResourceDirectory
     );
@@ -763,7 +753,7 @@ NTSTATUS
 NTAPI
 LdrEnumResources(
     _In_ PVOID DllHandle,
-    _In_ PLDR_RESOURCE_INFO ResourceInfo,
+    _In_ const PCWSTR ResourceInfo[],
     _In_ ULONG Level,
     _Inout_ ULONG *ResourceCount,
     _Out_writes_to_opt_(*ResourceCount, *ResourceCount) PLDR_ENUM_RESOURCE_ENTRY Resources

@@ -39,9 +39,14 @@ typedef struct _NLSTABLEINFO
 } NLSTABLEINFO, *PNLSTABLEINFO;
 
 #if (PHNT_MODE != PHNT_MODE_KERNEL)
-NTSYSAPI USHORT NlsAnsiCodePage;
-NTSYSAPI BOOLEAN NlsMbCodePageTag;
-NTSYSAPI BOOLEAN NlsMbOemCodePageTag;
+
+#ifdef DATA_EXPORT
+_DATAIMP USHORT NlsAnsiCodePage;
+_DATAIMP BOOLEAN NlsMbCodePageTag;
+_DATAIMP BOOLEAN NlsMbOemCodePageTag;
+
+#endif
+
 #endif
 
 #endif

@@ -68,7 +68,10 @@
 
 // Options
 
-//#define PHNT_NO_INLINE_INIT_STRING
+#ifndef _DATAIMP
+#define _DATAIMP __declspec(dllimport)
+#endif
+
 
 #ifdef __cplusplus
 extern "C" {

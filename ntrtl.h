@@ -3614,10 +3614,12 @@ typedef enum _RTL_PATH_TYPE
 
 // Data exports (ntdll.lib/ntdllp.lib)
 
-NTSYSAPI PWSTR RtlNtdllName;
-NTSYSAPI UNICODE_STRING RtlDosPathSeperatorsString;
-NTSYSAPI UNICODE_STRING RtlAlternateDosPathSeperatorString;
-NTSYSAPI UNICODE_STRING RtlNtPathSeperatorString;
+#ifdef DATA_EXPORT
+_DATAIMP PWSTR RtlNtdllName;
+_DATAIMP UNICODE_STRING RtlDosPathSeperatorsString;
+_DATAIMP UNICODE_STRING RtlAlternateDosPathSeperatorString;
+_DATAIMP UNICODE_STRING RtlNtPathSeperatorString;
+#endif
 
 #ifndef PHNT_INLINE_SEPERATOR_STRINGS
 #define RtlNtdllName L"ntdll.dll"
