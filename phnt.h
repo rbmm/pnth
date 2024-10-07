@@ -66,6 +66,11 @@
 #define PHNT_VERSION PHNT_WIN7
 #endif
 
+#ifndef PAGE_SIZE
+#define PAGE_SIZE 0x1000
+#endif // !1
+
+
 // Options
 
 #ifndef _DATAIMP
