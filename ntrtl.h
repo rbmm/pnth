@@ -3291,7 +3291,7 @@ NTSYSAPI
 PIMAGE_NT_HEADERS
 NTAPI
 RtlImageNtHeader(
-    _In_ PVOID BaseOfImage
+    _In_ const void* BaseOfImage
     );
 
 #define RTL_IMAGE_NT_HEADER_EX_FLAG_NO_RANGE_CHECK 0x00000001
@@ -3301,7 +3301,7 @@ NTSTATUS
 NTAPI
 RtlImageNtHeaderEx(
     _In_ ULONG Flags,
-    _In_ PVOID BaseOfImage,
+    _In_ const void* BaseOfImage,
     _In_ ULONG64 Size,
     _Out_ PIMAGE_NT_HEADERS *OutHeaders
     );
@@ -3311,7 +3311,7 @@ PVOID
 NTAPI
 RtlAddressInSectionTable(
     _In_ PIMAGE_NT_HEADERS NtHeaders,
-    _In_ PVOID BaseOfImage,
+    _In_ const void* BaseOfImage,
     _In_ ULONG VirtualAddress
     );
 
@@ -3320,7 +3320,7 @@ PIMAGE_SECTION_HEADER
 NTAPI
 RtlSectionTableFromVirtualAddress(
     _In_ PIMAGE_NT_HEADERS NtHeaders,
-    _In_ PVOID BaseOfImage,
+    _In_ const void* BaseOfImage,
     _In_ ULONG VirtualAddress
     );
 
@@ -3328,7 +3328,7 @@ NTSYSAPI
 PVOID
 NTAPI
 RtlImageDirectoryEntryToData(
-    _In_ PVOID BaseOfImage,
+    _In_ const void* BaseOfImage,
     _In_ BOOLEAN MappedAsImage,
     _In_ USHORT DirectoryEntry,
     _Out_ PULONG Size
@@ -3339,7 +3339,7 @@ PIMAGE_SECTION_HEADER
 NTAPI
 RtlImageRvaToSection(
     _In_ PIMAGE_NT_HEADERS NtHeaders,
-    _In_ PVOID BaseOfImage,
+    _In_ const void* BaseOfImage,
     _In_ ULONG Rva
     );
 
@@ -3348,7 +3348,7 @@ PVOID
 NTAPI
 RtlImageRvaToVa(
     _In_ PIMAGE_NT_HEADERS NtHeaders,
-    _In_ PVOID BaseOfImage,
+    _In_ const void* BaseOfImage,
     _In_ ULONG Rva,
     _Out_opt_ PIMAGE_SECTION_HEADER *LastRvaSection
     );
@@ -3360,7 +3360,7 @@ NTSYSAPI
 PVOID
 NTAPI
 RtlFindExportedRoutineByName(
-    _In_ PVOID BaseOfImage,
+    _In_ const void* BaseOfImage,
     _In_ PCSTR RoutineName
     );
 
