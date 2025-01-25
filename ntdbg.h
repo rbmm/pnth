@@ -197,7 +197,7 @@ typedef struct _DBGUI_WAIT_STATE_CHANGE
         DBGKM_EXIT_PROCESS ExitProcess;
         DBGKM_LOAD_DLL LoadDll;
         DBGKM_UNLOAD_DLL UnloadDll;
-    } StateInfo;
+    };
 } DBGUI_WAIT_STATE_CHANGE, *PDBGUI_WAIT_STATE_CHANGE;
 
 #define DEBUG_READ_EVENT 0x0001
